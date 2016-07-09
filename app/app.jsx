@@ -1,6 +1,8 @@
     var React = require("react")
     var ReactDom = require("react-dom")
     var {Route, Router, IndexRoute, hashHistory} = require("react-router")
+    
+    var Main = require("main")
 
     //load foundation 
     //require("style!css!foundation-sites/dist/foundation.min.css")
@@ -19,7 +21,7 @@
 
    
     ReactDom.render(
-        <h3>React BP 3</h3>,
+        <Main />,
         document.getElementById('app')
         
         )

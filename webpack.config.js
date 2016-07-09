@@ -26,7 +26,11 @@ module.exports ={
                       //file extensions to be able to process from inside file req calls
                 alias: {
                     appcss: 'app/styles/app.scss',
-                }
+                },
+                modulesDirectories: [
+                    'node_modules', 
+                    './app/compos'
+                    ]
             },
     module: {
         loaders: [
