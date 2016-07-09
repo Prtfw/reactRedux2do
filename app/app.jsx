@@ -2,7 +2,7 @@
     var ReactDom = require("react-dom")
     var {Route, Router, IndexRoute, hashHistory} = require("react-router")
     
-    var Main = require("main")
+    var Tdapp = require("tdapp")
 
     //load foundation 
     //require("style!css!foundation-sites/dist/foundation.min.css")
@@ -21,7 +21,7 @@
 
    
     ReactDom.render(
-        <Main />,
+        <Tdapp />,
         document.getElementById('app')
         
         )
