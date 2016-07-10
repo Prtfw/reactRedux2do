@@ -1,6 +1,7 @@
     var React = require("react")
     var ReactDom = require("react-dom")
     var {Route, Router, IndexRoute, hashHistory} = require("react-router")
+    var $ = require("jquery")
     
     var Tdapp = require("tdapp")
 

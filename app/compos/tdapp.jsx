@@ -1,5 +1,7 @@
-var React = require("react")
-var Todos = require("todos")
+var React = require("react"),
+    Todos = require("todos"),
+    Add = require("addTD") 
+
 
 var main2do = React.createClass({
     getInitialState: function(){
@@ -14,11 +16,20 @@ var main2do = React.createClass({
       }  
     },
     
+    handAdd2do: (txt) => { //static version that pretends to add state to make sure add form works
+       
+       console.log('handAdd2do called')
+       alert('new 2do' + txt)
+    },
+
     render: function(){
+        console.log('in tdapp', this.handAdd2do)
+
         var {todos} = this.state
     return(
         <div>
             <Todos todos={todos}/>
+            <Add onAdd={this.handAdd2do}/>
         </div>
         )
         
