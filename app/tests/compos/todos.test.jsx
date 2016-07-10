@@ -22,4 +22,12 @@ describe('Todos', () => {
         var todocompos = TestUtils.scryRenderedComponentsWithType(tdlist, Todo)
         expect(todocompos.length).toBe(todos.length)
     })
+    it('should call onToggle Prop with id on click', () => {
+        var todoData = {txt: 'text', done: false, id: 42}
+        var spy= expect.createSpy()
+        var todo = TestUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy}/>)
+        var $el = $(ReactDOM.findDOMNode(todo))
+        TestUtils.Simulate.click($el[0])
+        expect(spy).toHaveBeenCalledWith(todoData.id);
+    })
 })

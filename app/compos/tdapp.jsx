@@ -7,11 +7,11 @@ var main2do = React.createClass({
     getInitialState: function(){
       return{
           todos: [
-              {id: 1, txt: 'find land'},
-              {id: 2, txt: 'get tool'},
-              {id: 3, txt: 'cut logs'},
-              {id: 4, txt: 'prep ground'},
-              {id: 5, txt: 'get dog team'},
+              {id: 1, txt: 'find land', done: false},
+              {id: 2, txt: 'get tool', done: true},
+              {id: 3, txt: 'cut logs',  done: false},
+              {id: 4, txt: 'prep ground',  done: false},
+              {id: 5, txt: 'get dog team',  done: false},
               ],
             shocomp: false,
             searchtxt: ''
@@ -40,12 +40,25 @@ var main2do = React.createClass({
       this.setState({
           todos: [
               ...this.state.todos, 
-              {id:uuid(), txt:text }]
+              {id:uuid(), txt:text,  done: false }]
       })
       
       
     },
-    handSearch: function  (shocomp, searchtxt)  {
+    handToggle: function  (tid)  {
+        
+        var updTodos = this.state.todos.map((todo)=>{
+            if (todo.id === tid){
+                todo.done = !todo.done
+            }
+            return todo;
+        })
+        //alert(id)
+        this.setState({
+            todos: updTodos
+        })
+    },
+     handSearch: function  (shocomp, searchtxt)  {
         console.log(shocomp, searchtxt)
         this.setState({
             shocomp: shocomp,
@@ -58,7 +71,7 @@ var main2do = React.createClass({
     return(
         <div>
             <SearchTD onSearch ={this.handSearch}/>
-            <Todos todos={todos}/>
+            <Todos todos={todos} onToggle={this.handToggle}/>
             <Add2do handAdd2do={this.handAdd2do}/>
         </div>
         )

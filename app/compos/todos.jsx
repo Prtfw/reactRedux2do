@@ -9,7 +9,7 @@ var Todos = React.createClass({
                // console.log("in todo map")
                 return todos.map((todo)=> {
                     return(
-                        <Todo  key={todo.id} {...todo} />
+                        <Todo onToggle={this.props.onToggle}  key={todo.id} {...todo} />
                         )
                 })
             };
