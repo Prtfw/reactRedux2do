@@ -8,7 +8,7 @@ var Todos = React.createClass({
             var renderTodos = () => {
                 return todos.map((todo)=> {
                     return(
-                        console.log(todo.txt, todo.id),
+                        //console.log(todo.txt, todo.id),
                         <Todo  key={todo.id} {...todo} />
                         )
                 })
