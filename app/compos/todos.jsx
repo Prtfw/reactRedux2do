@@ -6,9 +6,9 @@ var Todos = React.createClass({
             var {todos} = this.props
 
             var renderTodos = () => {
+               // console.log("in todo map")
                 return todos.map((todo)=> {
                     return(
-                        //console.log(todo.txt, todo.id),
                         <Todo  key={todo.id} {...todo} />
                         )
                 })

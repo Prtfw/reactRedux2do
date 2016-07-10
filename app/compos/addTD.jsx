@@ -5,10 +5,7 @@ var Add2do = React.createClass({
 
         e.preventDefault()
         var new2do = this.refs.add.value
-        console.log(this.props.handAdd2do)
 
-        
-        
       if (new2do.length>0){ 
           this.refs.add.value = ''
           this.props.handAdd2do(new2do)
