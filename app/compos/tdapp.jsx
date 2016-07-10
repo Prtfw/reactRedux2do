@@ -1,6 +1,6 @@
 var React = require("react"),
     Todos = require("todos"),
-    Add = require("addTD") 
+    Add2do = require("addTD") 
 
 
 var main2do = React.createClass({
@@ -29,7 +29,7 @@ var main2do = React.createClass({
     return(
         <div>
             <Todos todos={todos}/>
-            <Add onAdd={this.handAdd2do}/>
+            <Add2do handAdd2do={this.handAdd2do}/>
         </div>
         )
         

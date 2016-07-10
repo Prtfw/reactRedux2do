@@ -1,7 +1,7 @@
 var React = require("react")
 
-var Add = React.createClass({
-    onAdd: function(e){
+var Add2do = React.createClass({
+    onAdd2do: function (e){
 
         e.preventDefault()
         var new2do = this.refs.add.value
@@ -19,11 +19,11 @@ var Add = React.createClass({
     
 
     render: function(){
-            this.onAdd = this.onAdd.bind(this)
+            //this.onAdd = this.onAdd.bind(this)
 
         return (
             <div>
-                <form onSubmit={this.onAdd.bind(this)}>
+                <form onSubmit={this.onAdd2do}>
                     <input type='text' ref='add' placeholder="what else? r u forgetting s.th?" /> 
                     <button className='button blue hollow expanded'> add! </button>
                 </form>
@@ -32,4 +32,4 @@ var Add = React.createClass({
     }
 })
 
-module.exports = Add
+module.exports = Add2do
