@@ -12,8 +12,6 @@ var SearchTD = require('searchTD')
 2. define the compo using componame= TestUtils.renderIntoDocument(<compo u wana test nameofFUNCinCHILD = {spy})
 3. set test value via refs componame.refs.refname.(property i.e. value) = somevalue
 4. TestUtils.Simulate.<SomeAvailEvent>(theRefFromStep3)
-  
-
 */    
 describe('SearchTD', () => {
     it('should exit', () => {
