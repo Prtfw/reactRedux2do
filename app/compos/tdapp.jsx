@@ -1,21 +1,21 @@
 var React = require("react"),
+    uuid = require("node-uuid"),
+
     Todos = require("todos"),
     Add2do = require("addTD"), 
     SearchTD = require("searchTD"),
-    uuid = require("node-uuid")
+    todoApi = require("todoAPI")
+    
 var main2do = React.createClass({
     getInitialState: function(){
       return{
-          todos: [
-              {id: 1, txt: 'find land', done: false},
-              {id: 2, txt: 'get tool', done: true},
-              {id: 3, txt: 'cut logs',  done: false},
-              {id: 4, txt: 'prep ground',  done: false},
-              {id: 5, txt: 'get dog team',  done: false},
-              ],
+            todos: todoApi.getTodos(),
             shocomp: false,
             searchtxt: ''
       }  
+    },
+    componentDidUpdate: function(){
+        todoApi.setTodos(this.state.todos)
     },
     handAdd2do: function(text) { //static version that pretends to add state to make sure add form works
       // alert('new 2do' + txt)

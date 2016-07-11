@@ -24,7 +24,8 @@ module.exports = {
     root: __dirname,
     modulesDirectories: [
       'node_modules',
-      './app/compos'
+        './app/api',
+      './app/compos',
     ],
   
     alias: {
