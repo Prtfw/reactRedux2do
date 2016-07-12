@@ -67,11 +67,12 @@ var main2do = React.createClass({
     },
     render: function(){
         //console.log('in tdapp', this.handAdd2do)
-        var {todos} = this.state
+        var {todos, shocomp, searchtxt} = this.state
+        var filtered = todoApi.filter(todos, shocomp, searchtxt)
     return(
         <div>
             <SearchTD onSearch ={this.handSearch}/>
-            <Todos todos={todos} onToggle={this.handToggle}/>
+            <Todos todos={filtered} onToggle={this.handToggle}/>
             <Add2do handAdd2do={this.handAdd2do}/>
         </div>
         )
