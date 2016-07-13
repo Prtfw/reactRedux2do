@@ -1,6 +1,7 @@
 var React = require("react"),
     uuid = require("node-uuid"),
-
+    moment = require("moment"),
+    
     Todos = require("todos"),
     Add2do = require("addTD"), 
     SearchTD = require("searchTD"),
@@ -40,17 +41,21 @@ var main2do = React.createClass({
       this.setState({
           todos: [
               ...this.state.todos, 
-              {id:uuid(), txt:text,  done: false }]
+              {id:uuid(), txt:text,  done: false, madeDate: moment().unix(), doneDate: undefined }
+              ]
       })
-      
-      
     },
     handToggle: function  (tid)  {
+
         
         var updTodos = this.state.todos.map((todo)=>{
             if (todo.id === tid){
                 todo.done = !todo.done
+                todo.doneDate =  moment().unix()
+                console.log(todo.txt, todo.done)
+                console.log('doneDate set', todo.doneDate)
             }
+
             return todo;
         })
         //alert(id)
@@ -71,9 +76,16 @@ var main2do = React.createClass({
         var filtered = todoApi.filter(todos, shocomp, searchtxt)
     return(
         <div>
-            <SearchTD onSearch ={this.handSearch}/>
-            <Todos todos={filtered} onToggle={this.handToggle}/>
-            <Add2do handAdd2do={this.handAdd2do}/>
+            <h1 className = 'pg-title'> Much Todos </h1>
+                <div className = 'row'>
+                    <div className= 'column small-centered small-11 medium-6 large-4'>
+                        <div className='container'>
+                        <SearchTD onSearch ={this.handSearch} />
+                        <Todos todos={filtered} onToggle={this.handToggle}/>
+                        <Add2do handAdd2do={this.handAdd2do}/>
+                        </div>
+                    </div>
+                </div>
         </div>
         )
         

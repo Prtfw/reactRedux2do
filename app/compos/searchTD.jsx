@@ -9,13 +9,13 @@ var Search = React.createClass({
     },
     render: function(){
         return (
-            <div>
+            <div className='container__header'>
                 <div>
                     <input onChange={this.handSearch} type='search' ref='search' placeholder='search todos' />
                 </div>
                 <div>
                     <label> <input type='checkbox' ref='shocomp' onChange= {this.handSearch} /> Show Completed Todos? </label>
-                    Show Completed Todos?
+
                 </div>
             </div>
             )

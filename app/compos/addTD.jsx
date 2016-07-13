@@ -19,10 +19,10 @@ var Add2do = React.createClass({
             //this.onAdd = this.onAdd.bind(this)
 
         return (
-            <div>
+            <div className='container__footer'>
                 <form onSubmit={this.onAdd2do}>
-                    <input type='text' ref='add' placeholder="what else? r u forgetting s.th?" /> 
-                    <button className='button blue hollow expanded'> add! </button>
+                    <input type='text' ref='add' placeholder="What's on your hit list?" /> 
+                    <button className='button blue expanded'> add! </button>
                 </form>
             </div>
             )

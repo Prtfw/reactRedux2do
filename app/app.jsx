@@ -8,8 +8,9 @@
     //load foundation 
     //require("style!css!foundation-sites/dist/foundation.min.css")
     
-    $(document).foundation()
-    require("style!css!sass!appcss")
+   $(document).foundation();
+   require('style!css!sass!appscss')
+
   
 
     
