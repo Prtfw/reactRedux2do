@@ -1,10 +1,14 @@
 var React = require("react")
-var Todo = require("todo")
+import Todo from 'todo'
+var {connect} = require("react-redux") //provider companion 
 
-var Todos = React.createClass({
+var todoApi = require("todoAPI")
+
+
+export var Todos = React.createClass({
         render: function(){
-            var {todos} = this.props
-
+            var {todos, shocomp, searchtxt} = this.props //since using redux... nothing is getting passed to the prop
+            console.log(todos, shocomp, searchtxt)
             var renderTodos = () => {
                // console.log("in todo map")
                   if (todos.length <1) {
@@ -12,10 +16,11 @@ var Todos = React.createClass({
                   }
                   else{
                   
-                return todos.map((todo)=> {
-                
+                return todoApi.filter(todos, shocomp, searchtxt).map((todo)=> {
+                console.log('should show', todoApi.filter(todos, shocomp, searchtxt))
                     return(
-                        <Todo onToggle={this.props.onToggle}  key={todo.id} {...todo} />
+                        <Todo   key={todo.id} {...todo} />  //{/*onToggle={this.props.onToggle}*/}
+                        
                         )
                 })}
             };
@@ -29,4 +34,8 @@ var Todos = React.createClass({
         }
 })
 
-module.exports = Todos
+export default connect(
+    (state)=>{
+        return state //this is is now on the props of Todos
+    }
+    )(Todos)

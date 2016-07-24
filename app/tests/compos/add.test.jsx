@@ -4,30 +4,34 @@ var React = require('react'),
     expect = require('expect'),
     $ = require('jquery')
     
-var Add2do = require('addTD')
+var {Add2do} = require('addTD')
 
 describe('Add2do', () => {
     it('should exit', () => {
         expect(Add2do).toExist();
     })
     
-    it('should call onAddTodo func on prop with valide data', () => {
+    it('should dispatch onAddTodo with valide data', () => {
         var addtxt = 'check mail'
+        var action = {
+            type: "ADDTD",
+            txt: addtxt
+        }
         var spy = expect.createSpy();
-        var add2do = TestUtils.renderIntoDocument(<Add2do handAdd2do={spy} />);
+        var add2do = TestUtils.renderIntoDocument(<Add2do dispatch={spy} />);
         var $el = $(ReactDOM.findDOMNode(add2do))
         add2do.refs.add.value = addtxt
         TestUtils.Simulate.submit($el.find('form')[0])
-        expect(spy).toHaveBeenCalledWith(addtxt)
+        expect(spy).toHaveBeenCalledWith(action)
     })
     
-    it('should NOT call onAddTodo func on prop with bad data', () => {
+    it('should NOT dispatch onAddTodo func on prop with bad data', () => {
         var addtxt = ''
         var spy = expect.createSpy();
-        var add2do = TestUtils.renderIntoDocument(<Add2do handAdd2do={spy} />);
+        var add2do = TestUtils.renderIntoDocument(<Add2do dispatch={spy} />);
         var $el = $(ReactDOM.findDOMNode(add2do))
         add2do.refs.add.value = addtxt
         TestUtils.Simulate.submit($el.find('form')[0])
-        expect(spy).toNotHaveBeenCalled(addtxt)
+        expect(spy).toNotHaveBeenCalled()
     })
 })

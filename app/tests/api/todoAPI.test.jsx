@@ -1,6 +1,7 @@
 var expect = require("expect")
 
 var todoapi = require("todoAPI")
+var actions = require("actions")
 
 describe('todoAPI', () => {
     beforeEach(()=>{  // test life cycle runs before each test
@@ -36,15 +37,7 @@ describe('todoAPI', () => {
         }) 
     })
     
-    describe('getTodos', () => {
-    it('should not get invalid items', ()=> { 
-            var todos = [{id:1, txt: 'testy mctestson', done: false}]
-            localStorage.setItem('todos', JSON.stringify(todos)) //do not use setTodos... test one thing at a time!
-            var act = todoapi.getTodos('todos')
-            expect(act).toEqual(todos) //toBe compares the obj in memory
-        }) 
-        
-    })
+
 
 })
 
@@ -79,5 +72,5 @@ describe('todoAPI', () => {
         expect(searched.length).toEqual(todos.length)
     })
       
-      
+    
 })

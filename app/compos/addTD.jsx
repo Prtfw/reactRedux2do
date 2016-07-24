@@ -1,14 +1,18 @@
-var React = require("react")
+var React = require("react"),
+{connect} = require("react-redux"),
+actions = require("actions")
 
-var Add2do = React.createClass({
+export var Add2do = React.createClass({
     onAdd2do: function (e){
 
         e.preventDefault()
+        var {dispatch} = this.props
         var new2do = this.refs.add.value
 
       if (new2do.length>0){ 
           this.refs.add.value = ''
-          this.props.handAdd2do(new2do)
+          //this.props.handAdd2do(new2do)
+            dispatch(actions.addTD(new2do))
       }else{
           this.refs.add.focus()
       }
@@ -29,4 +33,6 @@ var Add2do = React.createClass({
     }
 })
 
-module.exports = Add2do
+
+export default connect()(Add2do)
+

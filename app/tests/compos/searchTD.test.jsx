@@ -4,7 +4,7 @@ var React = require('react'),
     expect = require('expect'),
     $ = require('jquery')
     
-var SearchTD = require('searchTD') 
+import {SearchTD} from 'searchTD' 
 
 //for res components usually there is one place that calls the prop functions passed down from the parent... this the pieace we usually wana test
 /*for testing with spy 
@@ -17,19 +17,22 @@ describe('SearchTD', () => {
     it('should exit', () => {
         expect(SearchTD).toExist();
     })
-    it('should call onSearch with entered input txt', () => {
+    it('should dispatch chgsearch with entered input txt', () => {
         var searchtxt='madisrad'
         var spy = expect.createSpy();
-        var search = TestUtils.renderIntoDocument(<SearchTD onSearch={spy}/>) 
+        var action = {type: "CHNG_SEARCH",
+        searchtxt }
+        var search = TestUtils.renderIntoDocument(<SearchTD dispatch={spy}/>) 
         search.refs.search.value = searchtxt
         TestUtils.Simulate.change(search.refs.search)
-        expect(spy).toHaveBeenCalled(false,searchtxt)
+        expect(spy).toHaveBeenCalled(action)
     })
-    it('should call onSearch with proper checkbox val', () => {
+    it('should dispatch chngshocomp with proper checkbox val', () => {
         var spy = expect.createSpy()
-        var search = TestUtils.renderIntoDocument(<SearchTD onSearch={spy} />)
+        var action ={ type: "CHNG_SHOCOMP"}
+        var search = TestUtils.renderIntoDocument(<SearchTD dispatch={spy} />)
         search.refs.shocomp.checked = true
         TestUtils.Simulate.change(search.refs.shocomp)
-        expect(spy).toHaveBeenCalledWith(true,'')
+        expect(spy).toHaveBeenCalledWith(action)
     })
 })
